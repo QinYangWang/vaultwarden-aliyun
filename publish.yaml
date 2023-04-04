@@ -1,9 +1,9 @@
-Edition: 1.0.0
+Edition: 1.1.0
 Type: Application
 Name: vaultwarden-aliyun
 Provider:
   - 阿里云 
-Version: 1.0.0
+Version: 1.1.0
 Description: 基于阿里云函数计算FC一键部署部署Vaultwarden
 HomePage: https://github.com/brulligno/vaultwarden-aliyun
 Tags: 
@@ -19,7 +19,7 @@ Service: # 使用的服务
       - AliyunFCFullAccess
 Parameters: # 标准的JSON Scheme
   type: object
-  additionalProperties: false # 不允许增加其他属性
+  additionalProperties: true # 不允许增加其他属性
   required: # 必填项
     - region
   properties:
@@ -29,11 +29,24 @@ Parameters: # 标准的JSON Scheme
       default: us-west-1
       description: 创建应用所在的地区
       enum:
+        - cn-qingdao
+        - cn-beijing
+        - cn-zhangjiakou
+        - cn-huhehaote
+        - cn-hangzhou
+        - cn-shanghai
+        - cn-shenzhen
+        - cn-hongkong
+        - ap-southeast-1
+        - ap-southeast-2
+        - ap-southeast-3
+        - ap-southeast-5
+        - ap-northeast-1
         - us-west-1
         - us-east-1
-        - ap-southeast-1
-        - ap-northeast-1
+        - eu-central-1
         - eu-west-1
+        - cn-zhangbei
     acrRegistry:
       title: 镜像仓库
       type: string

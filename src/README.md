@@ -46,7 +46,19 @@
 
 1. [安装 Serverless Devs Cli 开发者工具](https://www.serverless-devs.com/serverless-devs/install) ，并进行[授权信息配置](https://docs.serverless-devs.com/fc/config) ； 
 2. 初始化项目：`s init vaultwarden-aliyun -d vaultwarden-aliyun `
-3. 进入项目，并进行项目部署：`cd vaultwarden-aliyun && s deploy - y`
+3. 修改 `s.yaml` 中 `environmentVariables`，部分可选的环境变量：
+
+    ```
+    SIGNUPS_ALLOWED=true # 是否允许账户注册
+    ADMIN_TOKEN=therandomstring # 管理员访问API的token
+    SMTP_HOST=email-smtp.us-west-2.amazonaws.com # SMTP服务器主机地址
+    SMTP_FROM=no-reply@example.com # 管理员姓名 
+    SMTP_FROM_EMAIL=example@example.com # 管理员邮箱
+    SMTP_USERNAME=your-smtp-username # SMTP服务器用户名
+    SMTP_PASSWORD=your-smtp-password # SMTP服务器密码
+    ```
+
+4. 进入项目，并进行项目部署：`cd vaultwarden-aliyun && s deploy - y`
 
 ## 使用文档
 
@@ -55,3 +67,5 @@
 部署完成之后，获得一个域名，可以通过此域名访问vaultwarden服务。
 
 </usedetail>
+
+
