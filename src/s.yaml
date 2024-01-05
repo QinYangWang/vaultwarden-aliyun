@@ -1,41 +1,46 @@
-edition: 1.0.0           #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
-name: vaultwarden-alicloud           #  项目名称
-access: default        #  秘钥别名
-
-services:
-  vaultwarden: # 模块名称
-    component: devsapp/fc # 组件名称
-    props: # 组件的属性值
-      region: {{ region }} # 地域
-      service: # 服务配置
-        name: vaultwarden-fc-service # service名称
-        description: vaultwarden fc component # Service的简短描述
-        internetAccess: true # 设为true让function可以访问公网
-        vpcConfig: auto
-        nasConfig: auto # NAS配置, 配置后function可以访问指定NAS
-      function: # 函数配置
-        name: vaultwarden-fc # function名称
-        description: 'vaultwarden for aliyun fc' # function的简短描述 
-        memorySize: 512 # function的内存规格
-        runtime: custom-container # 运行时
-        timeout: 7200 # function运行的超时时间
-        caPort: 80 # CustomContainer/Runtime指定端口
-        customContainerConfig: # 自定义镜像配置
-          image: {{ acrRegistry }} # 容器镜像仓库地址
-        environmentVariables: # 环境变量
-          DATA_FOLDER: '/mnt/auto'
-      triggers: # 触发器配置
-        - name: httpTrigger # 触发器名称
-          type: http # 触发器类型
-          config: # 触发器配置，包括OSS触发器, Log触发器, Log触发器, Timer触发器, Http触发器, MNS触发器, CDN触发器
-            authType: anonymous # 鉴权类型，可选值：anonymous、function
-            disableURLInternet: false # 是否禁用公网访问 URL
-            methods: # HTTP 触发器支持的访问方法，可选值：GET、POST、PUT、DELETE、HEAD
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - HEAD
+edition: 1.0.0                                                                      # 命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
+name: vaultwarden-aliyun                                                            # 项目名称
+access: default                                                                     # 秘钥别名
+services:                                                                           # 服务配置
+  vaultwarden:                                                                      # 模块名称
+    component: devsapp/fc                                                           # 组件名称
+    actions:                                                                        # 自定义执行逻辑，关于 actions 的使用
+      pre-deploy:                                                                   # 在deploy之前运行
+        - component: fc build --use-docker --dockerfile ./code/Dockerfile           # 自定义执行命令
+    props:                                                                          # 组件的属性值
+      region: ${vars.region}                                                        # 地域
+      service:                                                                      # 服务配置
+        name: vaultwarden-service                                                   # service 名称
+        description: vaultwarden fc component                                       # service 的简短描述
+        internetAccess: true                                                        # 设为 true 让函数可以访问公网
+        vpcConfig: auto                                                             # VPC 配置, 配置后函数可以访问指定 NAS
+        nasConfig: auto                                                             # NAS 配置, 配置后函数可以访问指定 NAS
+      function:                                                                     # 函数配置
+        name: vaultwarden-function                                                  # 函数名称
+        description: 'vaultwarden for aliyun fc'                                    # 函数的简短描述 
+        memorySize: 128                                                             # 函数的内存规格
+        runtime: custom-container                                                   # 函数的运行时
+        timeout: 7200                                                               # 函数的运行超时时间
+        caPort: 80                                                                  # CustomContainer/Runtime 指定端口
+        cpu: 0.05                                                                   # 函数的 CPU 规格
+        customContainerConfig:                                                      # 函数镜像配置
+          image: registry-vpc.${vars.region}.aliyuncs.com/vaultwarden/server:alpine # 函数镜像保存地址
+        environmentVariables:                                                       # 环境变量
+          DATA_FOLDER: '/mnt/auto'                                                  # NAS 挂载路径
+          SIGNUPS_ALLOWED: true                                                     # 允许新用户注册
+          INVITATIONS_ALLOWED: true                                                 # 允许邀请新用户
+      triggers:                                                                     # 触发器配置
+        - name: httpTrigger                                                         # 触发器名称
+          type: http                                                                # 触发器类型
+          config:                                                                   # 触发器配置
+            authType: anonymous                                                     # 鉴权类型，可选值：anonymous、function
+            disableURLInternet: false                                               # 是否禁用公网访问 URL
+            methods:                                                                # 触发器支持的访问方法，可选值：GET、POST、PUT、DELETE、HEAD
+              - GET                                                                 # GET 方法
+              - POST                                                                # POST 方法
+              - PUT                                                                 # PUT 方法
+              - DELETE                                                              # DELETE 方法
+              - HEAD                                                                # HEAD 方法
       customDomains:
         - domainName: auto
           protocol: HTTP

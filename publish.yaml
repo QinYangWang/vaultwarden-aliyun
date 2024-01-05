@@ -26,7 +26,7 @@ Parameters: # 标准的JSON Scheme
     region:
       title: 地域
       type: string
-      default: us-west-1
+      default: cn-hangzhou
       description: 创建应用所在的地区
       enum:
         - cn-qingdao
@@ -46,12 +46,3 @@ Parameters: # 标准的JSON Scheme
         - us-east-1
         - eu-central-1
         - eu-west-1
-        - cn-zhangbei
-    acrRegistry:
-      title: 镜像仓库
-      type: string
-      description: 镜像仓库地址，需要在 https://cr.console.aliyun.com/ 中开通服务、创建仓库以及设置访问凭证
-      x-acr:
-        type: select
-        denpendency:
-          - region
