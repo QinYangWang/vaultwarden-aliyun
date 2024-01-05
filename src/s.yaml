@@ -1,11 +1,11 @@
-edition: 1.0.0                                                                      # 命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
+edition: 2.0.0                                                                      # 命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
 name: vaultwarden-aliyun                                                            # 项目名称
-access: "{{ access }}"                                                                     # 秘钥别名
+access: "{{ access }}"                                                              # 秘钥别名
 vars:                                                                               # 全局变量
   region: "{{ region }}"                                                            # 地域
-resources:                                                                           # 服务配置
+resources:                                                                          # 服务配置
   vaultwarden:                                                                      # 模块名称
-    component: fc3                                                            # 组件名称
+    component: fc3                                                                  # 组件名称
     actions:                                                                        # 自定义执行逻辑，关于 actions 的使用
       pre-deploy:                                                                   # 在deploy之前运行
         - component: fc3 build --dockerfile ./code/Dockerfile                       # 要运行的组件，格式为 component: 组件名 命令 参数
