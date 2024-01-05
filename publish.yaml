@@ -1,11 +1,11 @@
-Edition: 1.1.0
+Edition: 1.2.0
 Type: Application
 Name: vaultwarden-aliyun
 Provider:
   - 阿里云 
-Version: 1.1.0
+Version: 1.2.0
 Description: 基于阿里云函数计算FC一键部署部署Vaultwarden
-HomePage: https://github.com/brulligno/vaultwarden-aliyun
+HomePage: https://github.com/QinYangWang/vaultwarden-aliyun
 Tags: 
   - 部署函数
   - 部署组件

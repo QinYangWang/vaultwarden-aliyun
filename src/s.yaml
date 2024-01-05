@@ -1,12 +1,14 @@
 edition: 1.0.0                                                                      # 命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
 name: vaultwarden-aliyun                                                            # 项目名称
-access: default                                                                     # 秘钥别名
-services:                                                                           # 服务配置
+access: "{{ access }}"                                                                     # 秘钥别名
+vars:                                                                               # 全局变量
+  region: "{{ region }}"                                                            # 地域
+resources:                                                                           # 服务配置
   vaultwarden:                                                                      # 模块名称
-    component: devsapp/fc                                                           # 组件名称
+    component: fc3                                                            # 组件名称
     actions:                                                                        # 自定义执行逻辑，关于 actions 的使用
       pre-deploy:                                                                   # 在deploy之前运行
-        - component: fc build --use-docker --dockerfile ./code/Dockerfile           # 自定义执行命令
+        - component: fc3 build --dockerfile ./code/Dockerfile                       # 要运行的组件，格式为 component: 组件名 命令 参数
     props:                                                                          # 组件的属性值
       region: ${vars.region}                                                        # 地域
       service:                                                                      # 服务配置
@@ -23,6 +25,7 @@ services:                                                                       
         timeout: 7200                                                               # 函数的运行超时时间
         caPort: 80                                                                  # CustomContainer/Runtime 指定端口
         cpu: 0.05                                                                   # 函数的 CPU 规格
+        code: ./code                                                                # 函数的代码路径
         customContainerConfig:                                                      # 函数镜像配置
           image: registry-vpc.${vars.region}.aliyuncs.com/vaultwarden/server:alpine # 函数镜像保存地址
         environmentVariables:                                                       # 环境变量
