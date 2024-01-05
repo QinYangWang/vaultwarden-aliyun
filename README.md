@@ -1,5 +1,5 @@
-> 注：当前项目为 Serverless Devs 应用，由于应用中会存在需要初始化才可运行的变量（例如应用部署地区、服务名、函数名等等），所以**不推荐**直接 Clone 本仓库到本地进行部署或直接复制 s.yaml 使用，**强烈推荐**通过 `s init` 的方法或应用中心进行初始化，详情可参考[部署 & 体验](#部署--体验) 。
->
+> 注：当前项目为 Serverless Devs 应用，由于应用中会存在需要初始化才可运行的变量（例如应用部署地区、服务名、函数名等等），所以**不推荐**直接 Clone 本仓库到本地进行部署或直接复制 s.yaml 使用，**强烈推荐**通过 `s init` 的方法或应用中心进行初始化，详情可参考[部署 &amp; 体验](#部署--体验) 。
+
 # vaultwarden-aliyun 帮助文档
 
 <p align="center" class="flex justify-center">
@@ -48,16 +48,15 @@
 2. 初始化项目：`s init vaultwarden-aliyun -d vaultwarden-aliyun`
 3. 修改 `s.yaml` 中 `environmentVariables`，部分可选的环境变量：
 
-    ```
-    SIGNUPS_ALLOWED=true # 是否允许账户注册
-    ADMIN_TOKEN=therandomstring # 管理员访问API的token
-    SMTP_HOST=email-smtp.us-west-2.amazonaws.com # SMTP服务器主机地址
-    SMTP_FROM=no-reply@example.com # 管理员姓名 
-    SMTP_FROM_EMAIL=example@example.com # 管理员邮箱
-    SMTP_USERNAME=your-smtp-username # SMTP服务器用户名
-    SMTP_PASSWORD=your-smtp-password # SMTP服务器密码
-    ```
-
+   ```
+   SIGNUPS_ALLOWED=true # 是否允许账户注册
+   ADMIN_TOKEN=therandomstring # 管理员访问API的token
+   SMTP_HOST=email-smtp.us-west-2.amazonaws.com # SMTP服务器主机地址
+   SMTP_FROM=no-reply@example.com # 管理员姓名 
+   SMTP_FROM_EMAIL=example@example.com # 管理员邮箱
+   SMTP_USERNAME=your-smtp-username # SMTP服务器用户名
+   SMTP_PASSWORD=your-smtp-password # SMTP服务器密码
+   ```
 4. 进入项目，并进行项目部署：`cd vaultwarden-aliyun && s deploy - y`
 
 ## 使用文档
@@ -67,5 +66,3 @@
 部署完成之后，获得一个域名，可以通过此域名访问vaultwarden服务。
 
 </usedetail>
-
-

@@ -3,12 +3,12 @@ name: vaultwarden-aliyun                                                        
 access: "{{ access }}"                                                              # 秘钥别名
 vars:                                                                               # 全局变量
   region: "{{ region }}"                                                            # 地域
-resources:                                                                          # 服务配置
+services:                                                                           # 服务配置
   vaultwarden:                                                                      # 模块名称
-    component: fc3                                                                  # 组件名称
+    component: devsapp/fc                                                           # 组件名称
     actions:                                                                        # 自定义执行逻辑，关于 actions 的使用
       pre-deploy:                                                                   # 在deploy之前运行
-        - component: fc3 build --dockerfile ./code/Dockerfile                       # 要运行的组件，格式为 component: 组件名 命令 参数
+        - component: fc build --use-docker --dockerfile ./code/Dockerfile           # 要运行的组件，格式为 component: 组件名 命令 参数
     props:                                                                          # 组件的属性值
       region: ${vars.region}                                                        # 地域
       service:                                                                      # 服务配置
