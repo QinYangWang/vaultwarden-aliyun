@@ -27,7 +27,7 @@ services:                                                                       
         cpu: 0.05                                                                   # 函数的 CPU 规格
         code: ./code                                                                # 函数的代码路径
         customContainerConfig:                                                      # 函数镜像配置
-          image: registry-vpc.${vars.region}.aliyuncs.com/vaultwarden/server:alpine # 函数镜像保存地址
+          image: registry-vpc.${vars.region}.aliyuncs.com/taimatsu/vaultwarden:alpine # 函数镜像保存地址
         environmentVariables:                                                       # 环境变量
           DATA_FOLDER: '/mnt/auto'                                                  # NAS 挂载路径
           SIGNUPS_ALLOWED: true                                                     # 允许新用户注册
