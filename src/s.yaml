@@ -25,6 +25,7 @@ services:                                                                       
         timeout: 7200                                                               # 函数的运行超时时间
         caPort: 80                                                                  # CustomContainer/Runtime 指定端口
         cpu: 0.05                                                                   # 函数的 CPU 规格
+        diskSize: 512                                                               # 函数的磁盘规格
         code: ./code                                                                # 函数的代码路径
         customContainerConfig:                                                      # 函数镜像配置
           image: registry-vpc.${vars.region}.aliyuncs.com/taimatsu/vault:alpine     # 函数镜像保存地址
