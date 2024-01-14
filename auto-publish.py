@@ -1,7 +1,9 @@
 # coding=utf-8
 
 import os
+from dotenv import load_dotenv
 
+load_dotenv(".env")
 os.system("s cli registry login --token {}".format(os.environ["REGISTRY_TOKEN"]))
 
 
