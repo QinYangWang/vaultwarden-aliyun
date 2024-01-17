@@ -1,8 +1,8 @@
 <div align=center> <img src="https://s2.loli.net/2024/01/17/vGWJMQilRyt6ko1.png" width="100%"/> </div>
 
-<p align="center">
+<h2 align="center">
   <span><b>VaultWarden Serverless Devs</b></span><br>
-</p>
+</h2>
 
 <p align="center" class="flex justify-center">
     <a href="https://www.serverless-devs.com" class="ml-1">
@@ -82,7 +82,7 @@
 1. 登录[函数计算控制台](https://fcnext.console.aliyun.com/overview)。
 2. 在左侧菜单栏选择**高级功能** > **域名管理**。
 3. 在顶部菜单栏，选择所需**地域**，在**域名管理**页面选择**添加自定义域名**。
-   ![custom-domain.png](https://s2.loli.net/2024/01/17/5Chw9H3L7KBaRWU.png)
+   ![image.png](https://s2.loli.net/2024/01/17/RtrskX5z8U9mHnp.png)
 4. 在**添加自定义域名**页面配置如下参数：
    - 域名：填写个人域名地址，如 `vaultwarden.mydomain.com`
    - 公网 CNAME：将上面填写的域名对应的 DNS 添加此处提供的 CNAME
