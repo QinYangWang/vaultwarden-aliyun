@@ -50,7 +50,7 @@ services:                                                                       
               - HEAD                                                                               # HEAD 方法
       customDomains:                                                                               # 自定义域名
         - domainName: auto                                                                         # 域名，如果是 auto 取值，系统则会默认分配域名
-          protocol: HTTP,HTTPS                                                                     # 协议，取值：HTTP, HTTP,HTTPS
+          protocol: HTTP                                                                           # 协议
           routeConfigs:                                                                            # 路由配置
             - path: '/*'                                                                           # 路径
               methods:                                                                             # 支持的请求方法列表
