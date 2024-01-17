@@ -86,7 +86,7 @@
 4. 在**添加自定义域名**页面配置如下参数：
    - 域名：填写个人域名地址，如 `vaultwarden.mydomain.com`
    - 公网 CNAME：将上面填写的域名对应的 DNS 添加此处提供的 CNAME
-   - HTTPS：选择**启用**
+   - HTTPS：选择**启用**，并勾选**强制 HTTPS**
    - 证书类型：如果是阿里云平台的域名可以去[SSL证书管理](https://yundun.console.aliyun.com/?p=cas#/certExtend/free/cn-hangzhou)申请免费证书，如果是其他平台则需要手动上传申请的证书文件
    - TLS 协议版本：选择**支持 TLS1.2 及以上版本，兼容性较好，安全性最高**
    - 加密套件：选择**全部加密套件，兼容性较高，安全性较低**
